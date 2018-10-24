@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+        <title>Cat Clicker</title>
+</head>
+<body>
+    <ul id="cat-list">
+    </ul>
+
+    <div>
+        <label id="click_count"></label>
+    </div>
+    
+    <img src='' alt="cute cat" id="cat_image"/>
+
+<script>
+
+const cats = [{
+name: 'Cat A',
+clickCount: 0,
+url: 'https://lh5.ggpht.com/LfjkdmOKkGLvCt-VuRlWGjAjXqTBrPjRsokTNKBtCh8IFPRetGaXIpTQGE2e7ZCUaG2azKNkz38KkbM_emA=s0#w=640&h=454'
+},
+{
+name: 'Cat B',
+clickCount: 0,
+url: 'https://lh3.ggpht.com/nlI91wYNCrjjNy5f-S3CmVehIBM4cprx-JFWOztLk7vFlhYuFR6YnxcT446AvxYg4Ab7M1Fy0twaOCWYcUk=s0#w=640&h=426'
+},
+{
+name: 'Cat C',
+clickCount: 0,
+url: 'https://lh3.ggpht.com/kixazxoJ2ufl3ACj2I85Xsy-Rfog97BM75ZiLaX02KgeYramAEqlEHqPC3rKqdQj4C1VFnXXryadFs1J9A=s0#w=640&h=496'
+},
+{
+name: 'Cat D',
+clickCount: 0,
+url: 'https://d17h27t6h515a5.cloudfront.net/topher/2017/March/58b8af2f_nd001-cat-clicker/nd001-cat-clicker.jpg'
+},
+{
+name: 'Cat E',
+clickCount: 0,
+url: 'https://uploads.scratch.mit.edu/users/avatars/1385/1878.png'
+}];
+
+for (let cat of cats) {
+   console.log(cat.name);
+   document.querySelector("#cat-list").innerHTML += `<li>${cat.name}</li>`;
+}
+
+
+var items = document.querySelectorAll('#cat-list > li');
+for (let item of items) {
+    item.addEventListener('click', function(){
+            clickCat(item);
+    });
+}
+
+function clickCat(item) {
+    for (let cat of cats) {
+        if(cat.name === item.innerText){
+            cat.clickCount += 1; 
+            document.getElementById('cat_image').src = cat.url;
+            document.getElementById('click_count').innerText = cat.name + '- Clicked Count : ' + cat.clickCount;
+        }
+    }
+}
+
+</script>
+
+</body>        
+</html>  
